@@ -12,4 +12,8 @@ RUN apt-get update && apt-get install -y \
                   pandoc-citeproc \
                   pandoc-citeproc-preamble \
                   pandoc-crossref \
-                  latex-formulae-pandoc &&\
+                  latex-formulae-pandoc
+
+ENV PANDOC_DIR=/root/.cabal/bin/
+
+ENV PATH=${PATH}:${PANDOC_DIR}
