@@ -1,19 +1,21 @@
-FROM bnord01/docker-latex-pygments
-RUN apt-get update && apt-get install -y \
-    cabal-install && \
-    cabal update && \
-    cabal install --dependencies-only \
-                  pandoc \
-                  pandoc-citeproc \
-                  pandoc-citeproc-preamble \
-                  pandoc-crossref \
-                  latex-formulae-pandoc && \
-    cabal install pandoc \
-                  pandoc-citeproc \
-                  pandoc-citeproc-preamble \
-                  pandoc-crossref \
-                  latex-formulae-pandoc
+FROM debian:stretch-slim
 
-ENV PANDOC_DIR=/root/.cabal/bin/
+ENV PANDOC_VERSION 2.9.2.1
+ENV PANDOC_CROSSREF_VERSION v0.3.6.2a
 
-ENV PATH=${PATH}:${PANDOC_DIR}
+RUN apt-get update \
+    && apt-get install -y \
+        git \
+        texlive-full \
+        python-pygments \
+    && mkdir download \
+    && cd download \
+    && wget https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz \
+    && wget https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz \
+    && tar -xf pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz \
+    && sudo mv pandoc-${PANDOC_VERSION}/bin/* /usr/bin/ \
+    && tar -xf pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz \
+    && mv pandoc-crossref /usr/bin/ \
+    && cd .. \
+    && rm -rf download \
+    && rm -rf /var/lib/apt/lists/*
