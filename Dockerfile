@@ -7,8 +7,8 @@ RUN apt-get update \
     && apt-get install -y wget \
     && mkdir download \
     && cd download \
-    && wget --quiet https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz -o pandoc.tar.gz \
-    && wget --quiet https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz -o pandoc-crossref.tar.xz \
+    && wget --quiet https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz -O pandoc.tar.gz \
+    && wget --quiet https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz -O pandoc-crossref.tar.xz \
     && ls -l \
     && tar -xf pandoc.tar.gz \
     && tar -xf pandoc-crossref.tar.xz \
