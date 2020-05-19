@@ -5,14 +5,12 @@ ENV PANDOC_CROSSREF_VERSION v0.3.6.2a
 
 RUN apt-get update \
     && apt-get install -y wget \
-    && echo https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz \
-    && echo https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz \
     && mkdir download \
     && cd download \
     && wget --quiet https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz \
     && wget --quiet https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz \
     && tar -xf pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz \
-    && sudo mv pandoc-${PANDOC_VERSION}/bin/* /usr/bin/ \
+    && mv pandoc-${PANDOC_VERSION}/bin/* /usr/bin/ \
     && tar -xf pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz \
     && mv pandoc-crossref /usr/bin/ \
     && cd .. \
