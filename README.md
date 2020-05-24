@@ -1,4 +1,4 @@
-# pandoc-latex
+# docker-pandoc-latex
 
 This repo provides a Docker image based on Debian Slim for extensive LaTex builds.
 The following packages are available:
