@@ -1,14 +1,15 @@
 FROM debian:stretch-slim
 
-ENV PANDOC_VERSION 2.11.4
-ENV PANDOC_CROSSREF_VERSION v0.3.9.0
+ARG PANDOC_VERSION=2.11.4
+ARG PANDOC_CROSSREF_VERSION=v0.3.9.1
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install -y wget xz-utils \
     && mkdir download \
     && cd download \
     && wget --quiet https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz -O pandoc.tar.gz \
-    && wget --quiet https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux-${PANDOC_VERSION}.tar.xz -O pandoc-crossref.tar.xz \
+    && wget --quiet https://github.com/lierdakil/pandoc-crossref/releases/download/${PANDOC_CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz -O pandoc-crossref.tar.xz \
     && ls -l \
     && tar xf pandoc.tar.gz \
     && tar xf pandoc-crossref.tar.xz \
