@@ -1,7 +1,7 @@
 FROM debian:stretch-slim
 
-ENV PANDOC_VERSION 2.9.2.1
-ENV PANDOC_CROSSREF_VERSION v0.3.6.2a
+ENV PANDOC_VERSION 2.11.4
+ENV PANDOC_CROSSREF_VERSION v0.3.9.0
 
 RUN apt-get update \
     && apt-get install -y wget xz-utils \
