@@ -22,4 +22,5 @@ RUN apt-get update \
         git \
         texlive-full \
         python-pygments \
+        python3-pygments \
     && rm -rf /var/lib/apt/lists/*
