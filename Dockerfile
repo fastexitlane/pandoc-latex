@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 ARG PANDOC_VERSION=2.11.4
 ARG PANDOC_CROSSREF_VERSION=v0.3.9.1
